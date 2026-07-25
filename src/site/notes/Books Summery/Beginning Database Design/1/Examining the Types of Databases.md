@@ -1,0 +1,21 @@
+---
+{"dg-publish":true,"permalink":"/books-summery/beginning-database-design/1/examining-the-types-of-databases/","title":"Examining the Types of Databases","dg-note-properties":{"title":"Examining the Types of Databases"}}
+---
+
+
+we need to branch into both the database and application arenas because the choice of database modeling strategy is affected by application requirements. After all, the reason a database you build a database is to service some need. That need is influenced by one or more applications.
+
+Databases functionally fall into three general categories:
+
+1. Transactional Databases: a transactional database is built to handle a high volume of tiny, real-time changes—like adding a new customer, updating a phone number, or recording a single sale. Each of these actions is called a "transaction," and they usually affect just one or a few records at a time, not massive batches. The database's main job is to constantly insert, update, and delete small chunks of data to keep the business's current operations accurately reflected, moment by moment. This approach ensures speed, data integrity, and the ability for thousands of users to work simultaneously without the system slowing down or corrupting data, types of TD:
+
+	- Client-Server database—A client-server environment was common in the pre-Internet days where a transactional database serviced users within a single company. The number of users could range from as little as one to thousands, depending on the size of the company.
+	- OLTP (Online Transaction Processing) database is designed to handle countless small, real-time changes, but this creates major **concurrency** challenges—meaning the system must manage thousands or even millions of users trying to update the same data simultaneously without corrupting it or slowing down. Unlike older in-house client-server databases, which only served a limited number of employees inside a company, modern OLTP systems are exposed to the entire Internet, so the number of simultaneous users is unimaginably larger. This explosion in concurrent activity forces database designers to use advanced locking, queuing, and isolation techniques to prevent errors (like two people buying the last item in stock at the exact same time) while keeping response times fast for everyone.
+
+2. Decision Support System (DSS) database is specifically designed to help managers and executives make informed strategic choices, rather than to handle day-to-day operational tasks like ringing up sales or updating customer addresses. Instead of processing thousands of tiny, real-time transactions, a DSS database focuses on storing and organizing large volumes of historical data in a way that makes it easy to analyze trends, generate reports, and answer complex business questions. types of DSS:
+
+	- Data warehouse database—A data warehouse database can use the same data modeling approach as a transactional database model. However, data warehouses often contain many years of historical data to provide effective forecasting capabilities. The result is that data warehouses can become excessively large, perhaps even millions of times larger than their counterpart OLTP source databases. The OLTP database is the source database because the OLTP database is the database where all the transactional information in the data warehouse originates.
+	- Data mart—A data mart is essentially a small subset of a larger data warehouse. Data marts are typically extracted as small sections of data warehouses, or created as small section data chunks during the process of creating a much larger data warehouse database.
+	- Reporting database—Areporting database is often a data warehouse type database, but containing only active (and not historical or archived) data. A simple reporting database is of small size compared to a data warehouse database, and likely to be much more manageable and flexible.
+
+3. Hybrid Databases: is simply a mixture containing both OLTP type concurrency requirements and data warehouse type throughput requirements. In less-demanding environments (or in companies running smaller operations), a smaller hybrid database is often a more cost-effective option, simply because there is one rather than two databases—fewer machines, fewer software licenses, fewer people, the list goes on.

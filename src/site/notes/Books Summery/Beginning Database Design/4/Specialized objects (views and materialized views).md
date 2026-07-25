@@ -1,0 +1,6 @@
+---
+{"dg-publish":true,"permalink":"/books-summery/beginning-database-design/4/specialized-objects-views-and-materialized-views/","dg-note-properties":{}}
+---
+
+
+- A view is essentially a saved query definition—a logical overlay that contains no data itself, but rather acts as a virtual table that executes its underlying SQL against the physical tables every time it is accessed. The critical danger with views lies in how filtering works: if you apply a WHERE clause to a query that uses a view, that filter is applied **after** the view's internal query has already executed and returned its full result set, meaning the view may have pulled millions of rows from large tables before your filter narrows them down, causing massive performance waste. For example, if a view selects all rows from a billion-row table and you then query `SELECT * FROM view WHERE year = 2025`, the view first retrieves all billion rows and only then filters them. While views can speed up development by abstracting complex joins, they can completely kill database performance in production if used carelessly. The proper approach is to push all filtering **inside** the view definition itself, or better yet, avoid views for large tables and write direct queries with optimized filters.
