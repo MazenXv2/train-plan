@@ -10,4 +10,6 @@
 
 ## 5. [[Books Summery/Beginning Database Design/5/Understanding Normalization\|Understanding Normalization]]
 
+## 6. [[Books Summery/Beginning Database Design/6/Advanced Relational Database Modeling\|Advanced Relational Database Modeling]]
+
 
